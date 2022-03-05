@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,9 +15,10 @@ namespace _2019BL601_2019GH650.Data
         }
 
         public DbSet<_2019BL601_2019GH650.Models.Facultad> Facultad { get; set; }
-
         public DbSet<_2019BL601_2019GH650.Models.Departamento> Departamento { get; set; }
-
         public DbSet<_2019BL601_2019GH650.Models.Alumno> Alumno { get; set; }
+        public DbSet<_2019BL601_2019GH650.Models.Materia> Materia { get; set; }
+        public DbSet<_2019BL601_2019GH650.Models.Inscripciones> Inscripciones { get; set; }
+
     }
 }

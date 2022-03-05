@@ -16,5 +16,6 @@ namespace _2019BL601_2019GH650.Models
         public int dui { get; set; }
         public virtual Departamento departamento { get; set; }
         public int estado { get; set; }
+        public List<Inscripciones> inscripciones { get; set; }
     }
 }
