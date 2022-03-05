@@ -12,11 +12,11 @@ namespace _2019BL601_2019GH650.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FacultadsController : ControllerBase
+    public class FacultadController : ControllerBase
     {
         private readonly _2019BL601_2019GH650Context _context;
 
-        public FacultadsController(_2019BL601_2019GH650Context context)
+        public FacultadController(_2019BL601_2019GH650Context context)
         {
             _context = context;
         }
