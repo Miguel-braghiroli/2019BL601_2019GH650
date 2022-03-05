@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using _2019BL601_2019GH650.Data;
 
 namespace _2019BL601_2019GH650
 {
@@ -26,12 +28,18 @@ namespace _2019BL601_2019GH650
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<_2019BL601_2019GH650Context>(options =>
+                                                options.UseSqlServer(
+                                                                Configuration.GetConnectionString("notasdbConnection")
+                                                                ));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "_2019BL601_2019GH650", Version = "v1" });
             });
+
+            services.AddDbContext<_2019BL601_2019GH650Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("_2019BL601_2019GH650Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
