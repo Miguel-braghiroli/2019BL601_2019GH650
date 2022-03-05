@@ -12,47 +12,47 @@ namespace _2019BL601_2019GH650.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MateriaController : ControllerBase
+    public class AlumnosController : ControllerBase
     {
         private readonly _2019BL601_2019GH650Context _context;
 
-        public MateriaController(_2019BL601_2019GH650Context context)
+        public AlumnosController(_2019BL601_2019GH650Context context)
         {
             _context = context;
         }
 
-        // GET: api/Materia
+        // GET: api/Alumnos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Materia>>> GetMateria()
+        public async Task<ActionResult<IEnumerable<Alumnos>>> GetAlumnos()
         {
-            return await _context.Materia.ToListAsync();
+            return await _context.Alumnos.ToListAsync();
         }
 
-        // GET: api/Materia/5
+        // GET: api/Alumnos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Materia>> GetMateria(int id)
+        public async Task<ActionResult<Alumnos>> GetAlumnos(int id)
         {
-            var materia = await _context.Materia.FindAsync(id);
+            var alumnos = await _context.Alumnos.FindAsync(id);
 
-            if (materia == null)
+            if (alumnos == null)
             {
                 return NotFound();
             }
 
-            return materia;
+            return alumnos;
         }
 
-        // PUT: api/Materia/5
+        // PUT: api/Alumnos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMateria(int id, Materia materia)
+        public async Task<IActionResult> PutAlumnos(int id, Alumnos alumnos)
         {
-            if (id != materia.id)
+            if (id != alumnos.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(materia).State = EntityState.Modified;
+            _context.Entry(alumnos).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace _2019BL601_2019GH650.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MateriaExists(id))
+                if (!AlumnosExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace _2019BL601_2019GH650.Controllers
             return NoContent();
         }
 
-        // POST: api/Materia
+        // POST: api/Alumnos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Materia>> PostMateria(Materia materia)
+        public async Task<ActionResult<Alumnos>> PostAlumnos(Alumnos alumnos)
         {
-            _context.Materia.Add(materia);
+            _context.Alumnos.Add(alumnos);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMateria", new { id = materia.id }, materia);
+            return CreatedAtAction("GetAlumnos", new { id = alumnos.id }, alumnos);
         }
 
-        // DELETE: api/Materia/5
+        // DELETE: api/Alumnos/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMateria(int id)
+        public async Task<IActionResult> DeleteAlumnos(int id)
         {
-            var materia = await _context.Materia.FindAsync(id);
-            if (materia == null)
+            var alumnos = await _context.Alumnos.FindAsync(id);
+            if (alumnos == null)
             {
                 return NotFound();
             }
 
-            _context.Materia.Remove(materia);
+            _context.Alumnos.Remove(alumnos);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool MateriaExists(int id)
+        private bool AlumnosExists(int id)
         {
-            return _context.Materia.Any(e => e.id == id);
+            return _context.Alumnos.Any(e => e.id == id);
         }
     }
 }

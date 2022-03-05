@@ -12,47 +12,47 @@ namespace _2019BL601_2019GH650.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NotaController : ControllerBase
+    public class DepartamentosController : ControllerBase
     {
         private readonly _2019BL601_2019GH650Context _context;
 
-        public NotaController(_2019BL601_2019GH650Context context)
+        public DepartamentosController(_2019BL601_2019GH650Context context)
         {
             _context = context;
         }
 
-        // GET: api/Nota
+        // GET: api/Departamentos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Nota>>> GetNota()
+        public async Task<ActionResult<IEnumerable<Departamentos>>> GetDepartamentos()
         {
-            return await _context.Nota.ToListAsync();
+            return await _context.Departamentos.ToListAsync();
         }
 
-        // GET: api/Nota/5
+        // GET: api/Departamentos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Nota>> GetNota(int id)
+        public async Task<ActionResult<Departamentos>> GetDepartamentos(int id)
         {
-            var nota = await _context.Nota.FindAsync(id);
+            var departamentos = await _context.Departamentos.FindAsync(id);
 
-            if (nota == null)
+            if (departamentos == null)
             {
                 return NotFound();
             }
 
-            return nota;
+            return departamentos;
         }
 
-        // PUT: api/Nota/5
+        // PUT: api/Departamentos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutNota(int id, Nota nota)
+        public async Task<IActionResult> PutDepartamentos(int id, Departamentos departamentos)
         {
-            if (id != nota.id)
+            if (id != departamentos.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(nota).State = EntityState.Modified;
+            _context.Entry(departamentos).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace _2019BL601_2019GH650.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!NotaExists(id))
+                if (!DepartamentosExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace _2019BL601_2019GH650.Controllers
             return NoContent();
         }
 
-        // POST: api/Nota
+        // POST: api/Departamentos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Nota>> PostNota(Nota nota)
+        public async Task<ActionResult<Departamentos>> PostDepartamentos(Departamentos departamentos)
         {
-            _context.Nota.Add(nota);
+            _context.Departamentos.Add(departamentos);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetNota", new { id = nota.id }, nota);
+            return CreatedAtAction("GetDepartamentos", new { id = departamentos.id }, departamentos);
         }
 
-        // DELETE: api/Nota/5
+        // DELETE: api/Departamentos/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteNota(int id)
+        public async Task<IActionResult> DeleteDepartamentos(int id)
         {
-            var nota = await _context.Nota.FindAsync(id);
-            if (nota == null)
+            var departamentos = await _context.Departamentos.FindAsync(id);
+            if (departamentos == null)
             {
                 return NotFound();
             }
 
-            _context.Nota.Remove(nota);
+            _context.Departamentos.Remove(departamentos);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool NotaExists(int id)
+        private bool DepartamentosExists(int id)
         {
-            return _context.Nota.Any(e => e.id == id);
+            return _context.Departamentos.Any(e => e.id == id);
         }
     }
 }

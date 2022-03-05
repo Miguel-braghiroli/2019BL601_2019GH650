@@ -6,9 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace _2019BL601_2019GH650.Models
 {
-    public class Materia
+    public class Materias
     {
-        [Key]
         public int id { get; set; }
         public virtual Facultad facultad { get; set; }
         public string materia { get; set; }

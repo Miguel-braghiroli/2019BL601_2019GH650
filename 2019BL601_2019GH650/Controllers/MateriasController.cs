@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,47 +12,47 @@ namespace _2019BL601_2019GH650.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlumnoController : ControllerBase
+    public class MateriasController : ControllerBase
     {
         private readonly _2019BL601_2019GH650Context _context;
 
-        public AlumnoController(_2019BL601_2019GH650Context context)
+        public MateriasController(_2019BL601_2019GH650Context context)
         {
             _context = context;
         }
 
-        // GET: api/Alumno
+        // GET: api/Materias
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Alumno>>> GetAlumno()
+        public async Task<ActionResult<IEnumerable<Materias>>> GetMaterias()
         {
-            return await _context.Alumno.ToListAsync();
+            return await _context.Materias.ToListAsync();
         }
 
-        // GET: api/Alumno/5
+        // GET: api/Materias/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Alumno>> GetAlumno(int id)
+        public async Task<ActionResult<Materias>> GetMaterias(int id)
         {
-            var alumno = await _context.Alumno.FindAsync(id);
+            var materias = await _context.Materias.FindAsync(id);
 
-            if (alumno == null)
+            if (materias == null)
             {
                 return NotFound();
             }
 
-            return alumno;
+            return materias;
         }
 
-        // PUT: api/Alumno/5
+        // PUT: api/Materias/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlumno(int id, Alumno alumno)
+        public async Task<IActionResult> PutMaterias(int id, Materias materias)
         {
-            if (id != alumno.id)
+            if (id != materias.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(alumno).State = EntityState.Modified;
+            _context.Entry(materias).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace _2019BL601_2019GH650.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlumnoExists(id))
+                if (!MateriasExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace _2019BL601_2019GH650.Controllers
             return NoContent();
         }
 
-        // POST: api/Alumno
+        // POST: api/Materias
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Alumno>> PostAlumno(Alumno alumno)
+        public async Task<ActionResult<Materias>> PostMaterias(Materias materias)
         {
-            _context.Alumno.Add(alumno);
+            _context.Materias.Add(materias);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAlumno", new { id = alumno.id }, alumno);
+            return CreatedAtAction("GetMaterias", new { id = materias.id }, materias);
         }
 
-        // DELETE: api/Alumno/5
+        // DELETE: api/Materias/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAlumno(int id)
+        public async Task<IActionResult> DeleteMaterias(int id)
         {
-            var alumno = await _context.Alumno.FindAsync(id);
-            if (alumno == null)
+            var materias = await _context.Materias.FindAsync(id);
+            if (materias == null)
             {
                 return NotFound();
             }
 
-            _context.Alumno.Remove(alumno);
+            _context.Materias.Remove(materias);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool AlumnoExists(int id)
+        private bool MateriasExists(int id)
         {
-            return _context.Alumno.Any(e => e.id == id);
+            return _context.Materias.Any(e => e.id == id);
         }
     }
 }
